@@ -51,7 +51,5 @@ pageEncoding="UTF-8"%>
 				<input type='submit' value="Submit">
 		</form>
 	</body>
-	<!-- html 주석은 클라이언트에게 넘어감 -->
-	<% // 자바 주석은 서블릿 단계에 남아있음 %>
-	<%-- JSP 주석은 현재, 즉 JSP문서 까지만 확인할 수 있음 --%>
+
 </html>
