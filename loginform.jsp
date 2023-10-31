@@ -68,21 +68,21 @@
 
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-key icon" style="margin-left: 300px;"></i></span>
+                    <span class="input-group-text"><i style="margin-left: 300px;"></i></span>
                 </div>
                 <input type="password" name="" class="form-control" placeholder="Password" style="margin-left: 300px;"/>
             </div><br />
 
             <div class="checkbox" >
-                <label ><input type="checkbox" value="" />아이디 기억하기</label>
+                <label  style="margin-left: 300px; white-space: nowrap;"><input type="checkbox" value="" />아이디 기억하기</label>
             </div><br />
 
             <button type="submit" class="btn btn-success" style="margin-left: 300px;"><span class="glyphicon glyphicon-off" ></span> Login</button>
             <button type="submit" class="btn btn-info" style="margin-left: 300px;"><span class="glyphicon glyphicon-remove" ></span> Login with Facebook </button><br />
 
             <div class="footer-login">
-                <p ><a href="#" >회원가입</a></p>
-                <p > Forgot <a href="userinfofind.do" >비밀번호를 잊어버리셨나요??</a></p>
+                <p  style="margin-left: 300px;"><a href="#" >회원가입</a></p>
+                <p  style="margin-left: 300px; white-space: nowrap;"><a href="userinfofind.do" >비밀번호찾기</a></p>
             </div>
         </div>
     </div>
