@@ -15,6 +15,11 @@
 <meta content="" name="description">
 <meta content="" name="keywords">
 
+
+<!-- 챠트 js 파일 -->
+<script src="resources/js/chart.js"></script>
+
+
 <!-- Favicons -->
 <link href="${path}/resources/assets/img/favicon.png" rel="icon">
 <link href="${path}/resources/assets/img/apple-touch-icon.png"
@@ -278,8 +283,8 @@
 
 		<ul class="sidebar-nav" id="sidebar-nav">
 
-			<li class="nav-item"><a class="nav-link " href="main_scm.do"> <i
-					class="bi bi-house"></i> <span>메인 페이지</span>
+			<li class="nav-item"><a class="nav-link " href="main_scm.do">
+					<i class="bi bi-house"></i> <span>메인 페이지</span>
 			</a></li>
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#">
@@ -354,343 +359,276 @@
 
 		<main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1>Chart.js</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Charts</li>
-          <li class="breadcrumb-item active">Chart.js</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
+			<div class="pagetitle">
+				<h1>Chart.js</h1>
+				<nav>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+						<li class="breadcrumb-item">Charts</li>
+						<li class="breadcrumb-item active">Chart.js</li>
+					</ol>
+				</nav>
+			</div>
+			<!-- End Page Title -->
 
-    <p>Chart.JS Examples. You can check the <a href="https://www.chartjs.org/docs/latest/samples/" target="_blank">official website</a> for more examples.</p>
+			<p>
+				Chart.JS Examples. You can check the <a
+					href="https://www.chartjs.org/docs/latest/samples/" target="_blank">official
+					website</a> for more examples.
+			</p>
 
-    <section class="section">
-      <div class="row">
+			<section class="section">
+				<div class="row">
 
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Line Chart</h5>
-			<div class="card-body">
-              <h5 class="card-title">Default Tabs</h5>
+				<!--구매 데이터 테이블 -->
+					<div class="col-lg-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">[구매 데이터]</h5>
+								<div class="card-body">
 
-              <!-- Default Tabs -->
-              <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false" tabindex="-1">Profile</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false" tabindex="-1">Contact</button>
-                </li>
-              </ul>
-              <div class="tab-content pt-2" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.
-                </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                  Nesciunt totam et. Consequuntur magnam aliquid eos nulla dolor iure eos quia. Accusantium distinctio omnis et atque fugiat. Itaque doloremque aliquid sint quasi quia distinctio similique. Voluptate nihil recusandae mollitia dolores. Ut laboriosam voluptatum dicta.
-                </div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                  Saepe animi et soluta ad odit soluta sunt. Nihil quos omnis animi debitis cumque. Accusantium quibusdam perspiciatis qui qui omnis magnam. Officiis accusamus impedit molestias nostrum veniam. Qui amet ipsum iure. Dignissimos fuga tempore dolor.
-                </div>
-              </div><!-- End Default Tabs -->
+									<!-- Default Tabs -->
+									<ul class="nav nav-tabs" id="myTab" role="tablist">
+										<li class="nav-item" role="presentation">
+											<button class="nav-link active" id="home-tab"
+												data-bs-toggle="tab" data-bs-target="#home" type="button"
+												role="tab" aria-controls="home" aria-selected="true">가격대 판매량</button>
+										</li>
+										<li class="nav-item" role="presentation">
+											<button class="nav-link" id="profile-tab"
+												data-bs-toggle="tab" data-bs-target="#profile" type="button"
+												role="tab" aria-controls="profile" aria-selected="false"
+												tabindex="-1">요일 판매량</button>
+										</li>
+										<li class="nav-item" role="presentation">
+											<button class="nav-link" id="contact-tab"
+												data-bs-toggle="tab" data-bs-target="#contact" type="button"
+												role="tab" aria-controls="contact" aria-selected="false"
+												tabindex="-1">카테고리 판매량</button>
+										</li>
+									</ul>
+									
+									<div class="tab-content pt-2" id="myTabContent">
+										<div class="tab-pane fade show active" id="home"
+											role="tabpanel" aria-labelledby="home-tab">
+											가격대 별 판매량 데이터를 활용하여 소비자의 선호도와 시장 동향을 파악하기 용이하고 최적의 가격을 설정할 수
+											있습니다. 이는 제품의 가격 탄력성을 이해하고 수익을 극대화하는 데 도움이 됩니다. 또한, 경쟁사와의 비교를
+											통해 시장에서 경쟁 우위를 확보하고 고객을 유치하는 전략을 구사할 수 있습니다.
+											<!-- 가격대 판매량  Line Chart -->
+											<canvas id="price_salesvolume_linechart"
+												style="max-height: 400px; display: block; box-sizing: border-box; height: 315px; width: 630px;"
+												width="630" height="315"></canvas>
+											<!-- 가격대 판매량  End Bar CHart -->
+										</div>
+										<div class="tab-pane fade" id="profile" role="tabpanel"
+											aria-labelledby="profile-tab">
+											요일별 판매량 데이터를 활용하면 소비자의 구매 패턴을 파악하여 효율적인 재고 및 운영 계획을 수립할 수
+											있습니다. 이를 통해 인기 상품을 적시에 공급하여 수요에 맞춰 생산하고 재고 비용을 최적화할 수 있습니다.
+											또한, 프로모션 및 마케팅 활동을 특정 요일에 집중하여 효과적으로 고객을 유치하고 매출을 증가시킬 수
+											있습니다.
+											<!-- 요일 판매량 Bar Chart -->
+											<canvas id="week_salesvolume_barchart"
+												style="max-height: 400px; display: block; box-sizing: border-box; height: 315px; width: 630px;"
+												width="630" height="315"></canvas>
 
-            </div>
-              <!-- Line Chart -->
-              <canvas id="lineChart" style="max-height: 400px; display: block; box-sizing: border-box; height: 315px; width: 630px;" width="630" height="315"></canvas>
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  new Chart(document.querySelector('#lineChart'), {
-                    type: 'line',
-                    data: {
-                      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                      datasets: [{
-                        label: 'Line Chart',
-                        data: [65, 59, 80, 81, 56, 55, 40],
-                        fill: false,
-                        borderColor: 'rgb(75, 192, 192)',
-                        tension: 0.1
-                      }]
-                    },
-                    options: {
-                      scales: {
-                        y: {
-                          beginAtZero: true
-                        }
-                      }
-                    }
-                  });
-                });
-              </script>
-              <!-- End Line CHart -->
+											<!-- 요일 판매량 End Bar CHart -->
+										</div>
+										<div class="tab-pane fade" id="contact" role="tabpanel"
+											aria-labelledby="contact-tab">
+											어떤 제품이 가장 수요가 높은지를 파악하여 제품 라인업을 최적화할 수 있습니다. 이를 통해 인기 있는
+											카테고리에 자원을 집중하고 부진한 카테고리에 대한 전략을 재고할 수 있습니다. 또한, 고객 선호도를 이해하여
+											타겟 시장에 맞춘 마케팅 전략을 구사하여 경쟁 우위를 확보하고 매출을 증가시킬 수 있습니다.
+											<!-- 카테고리 판매량 Pie Chart -->
+											<canvas id="category_salesvolume_piechart"
+												style="max-height: 400px; display: block; box-sizing: border-box; height: 400px; width: 630px;"
+												width="630" height="400"></canvas>
 
-            </div>
-          </div>
-        </div>
+											<!-- 카테고리 판매량 End Pie CHart -->
 
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Bar CHart</h5>
-<div class="card-body">
-              <h5 class="card-title">Default Tabs</h5>
+										</div>
+									</div>
+									<!-- End Default Tabs -->
 
-              <!-- Default Tabs -->
-              <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false" tabindex="-1">Profile</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false" tabindex="-1">Contact</button>
-                </li>
-              </ul>
-              <div class="tab-content pt-2" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.
-                </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                  Nesciunt totam et. Consequuntur magnam aliquid eos nulla dolor iure eos quia. Accusantium distinctio omnis et atque fugiat. Itaque doloremque aliquid sint quasi quia distinctio similique. Voluptate nihil recusandae mollitia dolores. Ut laboriosam voluptatum dicta.
-                </div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                  Saepe animi et soluta ad odit soluta sunt. Nihil quos omnis animi debitis cumque. Accusantium quibusdam perspiciatis qui qui omnis magnam. Officiis accusamus impedit molestias nostrum veniam. Qui amet ipsum iure. Dignissimos fuga tempore dolor.
-                </div>
-              </div><!-- End Default Tabs -->
+								</div>
 
-            </div>
-              <!-- Bar Chart -->
-              <canvas id="barChart" style="max-height: 400px; display: block; box-sizing: border-box; height: 315px; width: 630px;" width="630" height="315"></canvas>
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  new Chart(document.querySelector('#barChart'), {
-                    type: 'bar',
-                    data: {
-                      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                      datasets: [{
-                        label: 'Bar Chart',
-                        data: [65, 59, 80, 81, 56, 55, 40],
-                        backgroundColor: [
-                          'rgba(255, 99, 132, 0.2)',
-                          'rgba(255, 159, 64, 0.2)',
-                          'rgba(255, 205, 86, 0.2)',
-                          'rgba(75, 192, 192, 0.2)',
-                          'rgba(54, 162, 235, 0.2)',
-                          'rgba(153, 102, 255, 0.2)',
-                          'rgba(201, 203, 207, 0.2)'
-                        ],
-                        borderColor: [
-                          'rgb(255, 99, 132)',
-                          'rgb(255, 159, 64)',
-                          'rgb(255, 205, 86)',
-                          'rgb(75, 192, 192)',
-                          'rgb(54, 162, 235)',
-                          'rgb(153, 102, 255)',
-                          'rgb(201, 203, 207)'
-                        ],
-                        borderWidth: 1
-                      }]
-                    },
-                    options: {
-                      scales: {
-                        y: {
-                          beginAtZero: true
-                        }
-                      }
-                    }
-                  });
-                });
-              </script>
-              <!-- End Bar CHart -->
 
-            </div>
-          </div>
-        </div>
+							</div>
+						</div>
+					</div>
+					<!--End of 구매 데이터 테이블 -->
 
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Pie Chart</h5>
+				
+				<!-- 방문 데이터 테이블 -->
+					<div class="col-lg-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">[방문 데이터]</h5>
 
-              <!-- Pie Chart -->
-              <canvas id="pieChart" style="max-height: 400px; display: block; box-sizing: border-box; height: 400px; width: 630px;" width="630" height="400"></canvas>
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  new Chart(document.querySelector('#pieChart'), {
-                    type: 'pie',
-                    data: {
-                      labels: [
-                        'Red',
-                        'Blue',
-                        'Yellow'
-                      ],
-                      datasets: [{
-                        label: 'My First Dataset',
-                        data: [300, 50, 100],
-                        backgroundColor: [
-                          'rgb(255, 99, 132)',
-                          'rgb(54, 162, 235)',
-                          'rgb(255, 205, 86)'
-                        ],
-                        hoverOffset: 4
-                      }]
-                    }
-                  });
-                });
-              </script>
-              <!-- End Pie CHart -->
+								<!--  일간 방문자 데이터 Line Chart -->
+								<canvas id="daily_visitor_linechart"
+									style="max-height: 400px; display: block; box-sizing: border-box; height: 315px; width: 630px;"
+									width="630" height="315"></canvas>
+								<!-- 일간 방문자 데이터End Line CHart -->
 
-            </div>
-          </div>
-        </div>
+								<!-- 주간 방문자 데이터 Line Chart -->
+								<canvas id="weekly_visitor_linechart"
+									style="max-height: 400px; display: block; box-sizing: border-box; height: 315px; width: 630px;"
+									width="630" height="315"></canvas>
 
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Doughnut Chart</h5>
+								<!--주간 방문자 데이터 End Line CHart -->
 
-              <!-- Doughnut Chart -->
-              <canvas id="doughnutChart" style="max-height: 400px; display: block; box-sizing: border-box; height: 400px; width: 630px;" width="630" height="400"></canvas>
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  new Chart(document.querySelector('#doughnutChart'), {
-                    type: 'doughnut',
-                    data: {
-                      labels: [
-                        'Red',
-                        'Blue',
-                        'Yellow'
-                      ],
-                      datasets: [{
-                        label: 'My First Dataset',
-                        data: [300, 50, 100],
-                        backgroundColor: [
-                          'rgb(255, 99, 132)',
-                          'rgb(54, 162, 235)',
-                          'rgb(255, 205, 86)'
-                        ],
-                        hoverOffset: 4
-                      }]
-                    }
-                  });
-                });
-              </script>
-              <!-- End Doughnut CHart -->
+							</div>
+						</div>
+					</div>
+				<!--End of 방문 데이터 테이블 -->
 
-            </div>
-          </div>
-        </div>
 
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Radar Chart</h5>
+				<!-- 매출 데이터 테이블 -->
+					<div class="col-lg-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">[매출 데이터]</h5>
+								<div class="card-body">
+									
+								<!-- 총매출 데이터 테이블 -->		
+						              <div class="card info-card revenue-card">
+						                <div class="card-body">
+						                  <h5 class="card-title">Revenue <span>| This Year</span></h5>
+						
+						                  <div class="d-flex align-items-center">
+						                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+						                      <i class="bi bi-currency-dollar"></i>
+						                    </div>
+						                    <div class="ps-3">
+						                      <h6>$313,264</h6>
+						                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+						
+						                    </div>
+						                  </div>
+						                </div>
+						              </div>
+            	<!-- End of 총매출 데이터 테이블 -->	
+									
+									<!-- Default Tabs -->
+									<ul class="nav nav-tabs" id="myTab1" role="tablist">
+										<li class="nav-item" role="presentation">
+											<button class="nav-link active" id="home-tab1"
+												data-bs-toggle="tab" data-bs-target="#home1" type="button"
+												role="tab" aria-controls="home" aria-selected="true">성비 매출</button>
+										</li>
+										<li class="nav-item" role="presentation">
+											<button class="nav-link" id="profile-tab1"
+												data-bs-toggle="tab" data-bs-target="#profile1"
+												type="button" role="tab" aria-controls="profile"
+												aria-selected="false" tabindex="-1">카테고리 매출</button>
+										</li>
+										<li class="nav-item" role="presentation">
+											<button class="nav-link" id="contact-tab1"
+												data-bs-toggle="tab" data-bs-target="#contact1"
+												type="button" role="tab" aria-controls="contact"
+												aria-selected="false" tabindex="-1">월별 매출</button>
+										</li>
+									</ul>
+									<div class="tab-content pt-2" id="myTabContent1">
+										<div class="tab-pane fade show active" id="home1"
+											role="tabpanel" aria-labelledby="home-tab1">
+											<!-- 성비 매출 Pie Chart -->
+											<canvas id="gender_ratiosales_piechart"
+												style="max-height: 400px; display: block; box-sizing: border-box; height: 400px; width: 630px;"
+												width="630" height="400"></canvas>
 
-              <!-- Radar Chart -->
-              <canvas id="radarChart" style="max-height: 400px; display: block; box-sizing: border-box; height: 400px; width: 630px;" width="630" height="400"></canvas>
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  new Chart(document.querySelector('#radarChart'), {
-                    type: 'radar',
-                    data: {
-                      labels: [
-                        'Eating',
-                        'Drinking',
-                        'Sleeping',
-                        'Designing',
-                        'Coding',
-                        'Cycling',
-                        'Running'
-                      ],
-                      datasets: [{
-                        label: 'First Dataset',
-                        data: [65, 59, 90, 81, 56, 55, 40],
-                        fill: true,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        pointBackgroundColor: 'rgb(255, 99, 132)',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgb(255, 99, 132)'
-                      }, {
-                        label: 'Second Dataset',
-                        data: [28, 48, 40, 19, 96, 27, 100],
-                        fill: true,
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgb(54, 162, 235)',
-                        pointBackgroundColor: 'rgb(54, 162, 235)',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgb(54, 162, 235)'
-                      }]
-                    },
-                    options: {
-                      elements: {
-                        line: {
-                          borderWidth: 3
-                        }
-                      }
-                    }
-                  });
-                });
-              </script>
-              <!-- End Radar CHart -->
+											<!-- 성비 매출 End Pie CHart -->
+										</div>
+										<div class="tab-pane fade" id="profile1" role="tabpanel"
+											aria-labelledby="profile-tab">											
+											<!-- 카테고리 매출 Bar Chart -->
+											<canvas id="category_sales_barchart"
+												style="max-height: 400px; display: block; box-sizing: border-box; height: 315px; width: 630px;"
+												width="630" height="315"></canvas>
+											<!-- 카테고리 매출 End Bar CHart -->
+										</div>
+										<div class="tab-pane fade" id="contact1" role="tabpanel"
+											aria-labelledby="contact-tab">
+											<!-- 월별 매출 Bar Chart -->
+											<canvas id="monthly_sales_barchart"
+												style="max-height: 400px; display: block; box-sizing: border-box; height: 315px; width: 630px;"
+												width="630" height="315"></canvas>
+											<!-- 월별 매출 End Bar CHart -->
+										</div>
+									</div>
+									<!-- End Default Tabs -->
+								</div>
+							</div>
+						</div>
+					</div>
+				<!--End of 매출 데이터 테이블 -->
 
-            </div>
-          </div>
-        </div>
 
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Polar Area Chart</h5>
+				<!--고객 데이터 테이블 -->
+					<div class="col-lg-6">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">[고객 데이터]</h5>
+								<div class="card-body">
 
-              <!-- Polar Area Chart -->
-              <canvas id="polarAreaChart" style="max-height: 400px; display: block; box-sizing: border-box; height: 400px; width: 630px;" width="630" height="400"></canvas>
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  new Chart(document.querySelector('#polarAreaChart'), {
-                    type: 'polarArea',
-                    data: {
-                      labels: [
-                        'Red',
-                        'Green',
-                        'Yellow',
-                        'Grey',
-                        'Blue'
-                      ],
-                      datasets: [{
-                        label: 'My First Dataset',
-                        data: [11, 16, 7, 3, 14],
-                        backgroundColor: [
-                          'rgb(255, 99, 132)',
-                          'rgb(75, 192, 192)',
-                          'rgb(255, 205, 86)',
-                          'rgb(201, 203, 207)',
-                          'rgb(54, 162, 235)'
-                        ]
-                      }]
-                    }
-                  });
-                });
-              </script>
-              <!-- End Polar Area Chart -->
+									<!-- Default Tabs -->
+									<ul class="nav nav-tabs" id="myTab2" role="tablist">
+										<li class="nav-item" role="presentation">
+											<button class="nav-link active" id="home-tab2"
+												data-bs-toggle="tab" data-bs-target="#home2" type="button"
+												role="tab" aria-controls="home" aria-selected="true">고객
+												연령층</button>
+										</li>
+										<li class="nav-item" role="presentation">
+											<button class="nav-link" id="profile-tab2"
+												data-bs-toggle="tab" data-bs-target="#profile2"
+												type="button" role="tab" aria-controls="profile"
+												aria-selected="false" tabindex="-1">남녀 성비</button>
+										</li>
 
-            </div>
-          </div>
-        </div>
+									</ul>
+									<div class="tab-content pt-2" id="myTabContent2">
+										<div class="tab-pane fade show active" id="home2"
+											role="tabpanel" aria-labelledby="home-tab2">
+											<!-- 고객 연령층  Line Chart -->
+											<canvas id="customer_agegroup_linechart"
+												style="max-height: 400px; display: block; box-sizing: border-box; height: 315px; width: 630px;"
+												width="630" height="315"></canvas>
 
-      </div>
-    </section>
+											<!-- 고객 연령층  End Line CHart -->
 
-  </main>
+
+
+										</div>
+										<div class="tab-pane fade" id="profile2" role="tabpanel"
+											aria-labelledby="profile-tab">
+											<!-- 남녀 성비 Pie Chart -->
+											<canvas id="gender_ratio_piechart"
+												style="max-height: 400px; display: block; box-sizing: border-box; height: 400px; width: 630px;"
+												width="630" height="400"></canvas>
+
+											<!-- 남녀 성비 End Pie CHart -->
+										</div>
+
+									</div>
+									<!-- End Default Tabs -->
+
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+					
+				<!--End of 고객 데이터 테이블 -->
+					
+
+				</div>
+			<!--end of row  -->
+
+			</section>
+
+		</main>
 	</main>
 	<!-- End #main -->
 
