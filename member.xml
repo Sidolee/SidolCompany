@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<insert id="insertMember" parameterType="com.javassem.vo.MemberVO">	
+	INSERT INTO member(M_ID, M_PW, 		M_NAME, 	M_GENDER, 	M_BIRTH, 	M_TEL, 		
+					M_EMAIL, 	M_ADDR, 	M_CATEGORY1,  M_AGREE_INFO, 	M_AGREE_MARKETING, M_PREMIUM, M_GRADE) 
+	VALUES			(#{M_ID},#{ M_PW},	#{M_NAME}, #{M_GENDER}, #{M_BIRTH}, #{M_TEL}, 
+					#{M_EMAIL}, #{M_ADDR}, #{M_CATEGORY1}, #{M_AGREE_INFO}, #{M_AGREE_MARKETING}, 0, 0)
+	</insert>
+	
+	<select id="selectAllMember" resultType="com.javassem.vo.MemberVO">
+	SELECT * FROM MEMBER
+	</select>
+
+</mapper>
