@@ -15,6 +15,24 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+	// jQuery function to set the active class on click
+	$(document).ready(function() {
+		$('#categorybtn').on('click', function() {
+			  var isOpen = $('.btn-group').hasClass('open');
+
+		        // Remove 'active' class from all links
+		        if (isOpen) {
+		            $('.btn-group').removeClass('open');
+		        } else {
+		            $('.btn-group').addClass('open');
+		        }
+
+		
+		});
+	});
+</script>
 </head>
 <body>
 <!-- 최상단 페북,트위터,Google 배너  -->
@@ -52,6 +70,97 @@
         </div>
 
     </div>
+    
+       <div class="navigation">
+
+      <nav class="navbar navbar-theme">
+
+         <div class="container">
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+            <div class="navbar-header">
+
+               <button type="button" class="navbar-toggle collapsed"
+                  data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+
+                  <span class="sr-only">Menu</span> <span class="icon-bar"></span> <span
+                     class="icon-bar"></span> <span class="icon-bar"></span>
+
+               </button>
+
+            </div>
+
+            <div class="shop-category nav navbar-nav navbar-left">
+
+               <!-- Single button -->
+
+               <div class="btn-group">
+
+                  <button type="button"
+                     class="btn btn-shop-category dropdown-toggle"
+                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="categorybtn">
+
+                     경매 카테고리 <span class="caret"></span>
+
+                  </button>
+
+                  <ul class="dropdown-menu">
+
+                     <li><a href="">패션의류/잡화</a></li>
+
+                     <li><a href="">뷰티</a></li>
+
+                     <li><a href=""> 유아 </a></li>
+
+                     <li role="separator" class="divider"></li>
+
+                     <li><a href="">식품</a></li>
+
+                     <li><a href="">주방용품/홈 인테리어</a></li>
+
+                     <li><a href="">가전/디지털/자동차</a></li>
+                     
+                     <li role="separator" class="divider"></li>
+
+                     <li><a href="">스포츠/레저/건강용품</a></li>
+
+                     <li><a href="">도서/음반/DVD</a></li>
+
+                     <li><a href="">완구/취미/문구</a></li>
+
+
+
+                  </ul>
+
+               </div>
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <div class="collapse navbar-collapse" id="navbar">
+
+               <ul class="nav navbar-nav navbar-right">
+
+                  <li><a href="#">마이페이지</a></li>
+
+                  <li><a href="#">이벤트</a></li>
+
+                  <li><a href="#">경매 신청</a></li>
+
+                  <li><a href="#">문의 & FAQ</a></li>
+               </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+
+         </div>
+         <!-- /.container-fluid -->
+
+      </nav>
+
+   </div>
 
 <!-- 로그인 폼  -->
 <div class="container login-container">

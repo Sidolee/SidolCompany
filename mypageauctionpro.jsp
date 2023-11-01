@@ -1,31 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <!-- // 부트스트랩 설정 --> 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+ 
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Raleway:400,300,500,700,600' rel='stylesheet' type='text/css'>
 <!-- // 구글 폰트 설정 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" type="text/css">
 <!-- // CSS 적용 -->  
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/responsive.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
-
-<!-- 리스트 템플릿 적용 -->
-
    <link href="${pageContext.request.contextPath}/resources/css/styles2.css" rel="stylesheet" />
-<%--         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <link href="${pageContext.request.contextPath}/resources/css/styles2.css" rel="stylesheet" /> --%>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ 
 <script>
 	// jQuery function to set the active class on click
 	$(document).ready(function() {
+		$('.nav-link').on('click', function() {
+			// Remove 'active' class from all links
+			$('.nav-link').removeClass('active');
+
+			// Add 'active' class to the clicked link
+			$(this).addClass('active');
+		});
+		
 		$('#categorybtn').on('click', function() {
 			  var isOpen = $('.btn-group').hasClass('open');
 
@@ -38,22 +43,29 @@
 
 		
 		});
+		
 	});
 </script>
 
-<meta charset="UTF-8">
- <style>
-        
-/* 
-        .listInfoWrap {
-            text-align: center;
-        } */
-        
-        
-  .listInfoWrap {
-        display: flex;
-        justify-content: space-around; /* 1.flex : 한줄에 써짐 2.space-around : 중간에서 좌우끝단 3. center : 중간정렬 */
+
+<style>
+#sidebar {
+	
+	width: calc(100% - 140px);
+	
+}
+
+
+.userinfo {
+	
+	margin-left: -100px;
+	
+}
+
+.listInfoWrap {
+        justify-content: flex-start; /* 1.flex : 한줄에 써짐 2.space-around : 중간에서 좌우끝단 3. center : 중간정렬 */
         align-items: center;
+        font-size: 13px;
     }
 
     .result,
@@ -64,124 +76,54 @@
     .sort a {
         margin-right: 10px; /* 각 정렬 옵션 사이의 간격 조절 */
     }
-    </style>
-<title>Insert title here</title>
+</style>
 </head>
+
+
+
 <body>
-<!-- 최상단 페북,트위터,Google 배너  -->
-    <div class="top-bar">
 
-<!-- 최상단 페북,트위터,Google 배너  -->
-        <div class="container">
 
-            <div class="row">
+	<!-- 최상단 페북,트위터,Google 배너  -->
+	<div class="top-bar">
 
-                <div class="col-md-6">
+		<!-- 최상단 페북,트위터,Google 배너  -->
+		<div class="container">
 
-                    <div class="social pull-left">
+			<div class="row">
 
-                        <ul>
+				<div class="col-md-6">
 
-                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
+					<div class="social pull-left">
 
-                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+						<ul>
 
-                            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+							<li><a href=""><i class="fa fa-facebook"></i></a></li>
 
-                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+							<li><a href=""><i class="fa fa-twitter"></i></a></li>
 
-                        </ul>
+							<li><a href=""><i class="fa fa-google-plus"></i></a></li>
 
-                    </div>
+							<li><a href=""><i class="fa fa-linkedin"></i></a></li>
 
-                </div>
+						</ul>
 
-      
+					</div>
 
-            </div>
-
-        </div>
-
-    </div>
+				</div>
 
 
 
+			</div>
 
+		</div>
 
-<!-- 배너, 검색창, 장바구니 -->
-    <div class="header">
-
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-md-3 col-sm-4">
-
-                    <div class="logo">
-
-                        <a href="form.do">
-
-                            <img src="resources/images/logo.png" alt="Orani E-shop">
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-7 col-sm-5">
-
-                    <div class="search-form">
-
-                        <form class="navbar-form" role="search">
-
-                            <div class="form-group">
-
-                              <input type="text" class="form-control" placeholder="What do you need...">
-
-                            </div>
-
-                            <button type="submit" class="btn"><i class="fa fa-search"></i></button>
-
-                        </form>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-2 col-sm-3">
-
-                    <div class="cart">
-
-                        <div class="cart-icon">
-
-                            <a href=""><i class="fa fa-shopping-cart"></i></a>
-
-                        </div>
-
-                        <div class="cart-text">
-
-                            SHOPPING CART
-
-                            <br>
-
-                            0 items - $0.00
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+	</div>
 
 
 
-     <div class="navigation">
+	<!-- 배너 -->
+	   <div class="navigation">
 
       <nav class="navbar navbar-theme">
 
@@ -273,11 +215,35 @@
    </div>
 
 
-<!-- 23.10.30 물품 리스트 템플릿 -->
-  <!-- Navigation-->
-     <br></br>
+	<!-- (col-md-4")사이드 메뉴 + (col-md-8)회원정보 입력-->
+	<div class="container">
+		<div class="a">
+			<div class="col-md-4">
+				<!-- It can be fixed with bootstrap affix http://getbootstrap.com/javascript/#affix-->
+				<div id="sidebar" class="well sidebar-nav">
+					<h5>
+						<i class=""></i> <b>MY 정보</b>
+					</h5>
+					<ul class="nav nav-pills nav-stacked">
+						<li class="nav-link"><a href="mypagedefault.do">개인정보확인/수정</a></li>
+						<li class="nav-link"><a href="mypageaccount.do">계좌관리</a></li>
+						<li class="nav-link"><a href="mypagedelivery.do">배송내역</a></li>
+					</ul>
+					<h5>
+						<i class=""></i> <b>MY 쇼핑</b>
+					</h5>
+					<ul class="nav nav-pills nav-stacked">
+						<li class="active nav-link"><a href="mypageauctionpro.do">진행중인 경매</a></li>
+						<li class="nav-link"><a href="mypageauctionlist.do">경매내역</a></li>
+						<li class="nav-link"><a href="mypagewishlist.do">찜 리스트</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-8 userinfo">
+				<!-- 경매리스트 -->
+				
+			<br></br>
      <div class="listInfoWrap">
-        <div class="result">검색결과 (전체 <em>xxx,xxx</em>개)</div>
         <div class="list_sort_type">
             <div class="sort">
                 <a href="javascript:itemList.searchParam('orderby','popular');" class="current">인기상품순</a>
@@ -293,19 +259,8 @@
                 <button type="button" class="btn_type_gallery active"><span><img src="//static.bidbuy.co.kr/v6/common/images/btn/btn_gallery.png" alt="갤러리형"></span></button>
             </div> -->
         </div>
-    </div>
-        <!-- Header-->
-        <!--  <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                                            <h1 class="display-4 fw-bolder">현재 카테고리</h1>
-                
-                     <p class="lead fw-normal text-white-50 mb-0">신규 경매 | 인기 경매 | 높은 경매가 | 낮은 경매가 | 초기화        상품정렬(인기(참여자수)), 높은&낮은 가격,최신순)</p>
-                </div>
-            </div>
-        </header> -->
-        <!-- Section-->
-      <div class="productList">
+    </div>	
+			<div class="productList">
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -508,15 +463,138 @@
                 </div>
             </div>
         </section>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>
+       
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
     </div>
-</body>
+			</div>
+		</div>
+	</div>
 
+
+
+
+	<!-- footer -->
+	<div class="footer">
+
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-3 col-sm-3">
+
+					<div class="single-widget">
+
+						<h2 class="widget-title">About Us</h2>
+
+						<div class="widget-inner">
+
+							<p>Office: 868 Fake Street, New York</p>
+
+							<p>Phone: (08) 8827 633354</p>
+
+							<p>Fax: 08) 08 4752 1499</p>
+
+							<p>Email: mail@yourdomain.com</p>
+
+							<img src="resources/images/payment.png" alt="we accept">
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="col-md-3 col-sm-3">
+
+					<div class="single-widget">
+
+						<h2 class="widget-title">Information</h2>
+
+						<div class="widget-inner">
+
+							<ul>
+
+								<li><a href="">Frequently Asked Question</a></li>
+
+								<li><a href="">Terms and Condition</a></li>
+
+								<li><a href="">Privacy Policy</a></li>
+
+								<li><a href="">Customer Service</a></li>
+
+								<li><a href="">Delivery Information</a></li>
+
+								<li><a href="">Manufacturers</a></li>
+
+							</ul>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="col-md-3 col-sm-3">
+
+					<div class="single-widget">
+
+						<h2 class="widget-title">Customer Care</h2>
+
+						<div class="widget-inner">
+
+							<ul>
+
+								<li><a href="">Contact Us</a></li>
+
+								<li><a href="">Sitemap</a></li>
+
+								<li><a href="">Gift Vouchers</a></li>
+
+								<li><a href="">Live Chat 24x7</a></li>
+
+							</ul>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="col-md-3 col-sm-3">
+
+					<div class="single-widget">
+
+						<h2 class="widget-title">Our Services</h2>
+
+						<div class="widget-inner">
+
+							<ul>
+
+								<li><a href="">Shipping & Returns</a></li>
+
+								<li><a href="">Secure Shopping</a></li>
+
+								<li><a href="">International Shipping</a></li>
+
+								<li><a href="">Affiliates</a></li>
+
+								<li><a href="">Contact</a></li>
+
+							</ul>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</body>
 </html>
