@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-
+<% request.setCharacterEncoding("utf-8"); %>
 <!-- // 부트스트랩 설정 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Raleway:400,300,500,700,600' rel='stylesheet' type='text/css'>
@@ -63,9 +63,9 @@
 
 						<ul>
 
-							<li><a href=""><i class="fa fa-user"></i> ${vo.M_NAME }님 </a></li> 
+							<li><a href="mypagedefault.do"><i class="fa fa-user"></i> ${ sessionScope.logId } 님</a></li>
 
-							<li><a href=""><i class="fa fa-lock"></i> 로그아웃</a></li>
+							<li><a href="logout.do"><i class="fa fa-lock"></i>로그아웃</a></li>
 
 						</ul>
 
@@ -89,7 +89,7 @@
 
 					<div class="logo">
 
-						<a href="index.html"> <img src="resources/images/sidolLogo.png"
+						<a href="main_login.do"> <img src="resources/images/sidolLogo.png"
 							alt="Orani E-shop">
 
 						</a>
@@ -102,12 +102,12 @@
 
 					<div class="search-form">
 
-						<form class="navbar-form" role="search">
+						<form class="navbar-form" role="search" action="searchItem.do" method="post">
 
 							<div class="form-group">
 
 								<input type="text" class="form-control"
-									placeholder="여기서 상품 검색할거지?">
+									placeholder="여기서 상품 검색할거지?" name="A_TITLE">
 
 							</div>
 
@@ -125,15 +125,15 @@
 
 					<div class="cart">
 
-						<div class="cart-icon">
+						<div class="cart-icon"><a href="main.do">
 
-							<a href=""><i class="fa fa-shopping-cart"></i></a>
+							<i class="fa fa-shopping-cart"></i></a>
 
 						</div>
 
 						<div class="cart-text">
 
-							참여중인 경매 <br> 어케 집계하지
+							참여중인 경매 <br> 로그인해주세요
 
 						</div>
 
@@ -183,27 +183,27 @@
 
 						<ul class="dropdown-menu">
 
-							<li><a href="">패션의류/잡화</a></li>
+							<li><a href="productList.do">패션의류/잡화</a></li>
 
-							<li><a href="">뷰티</a></li>
+							<li><a href="productList.do">뷰티</a></li>
 
-							<li><a href=""> 유아 </a></li>
+							<li><a href="productList.do"> 유아 </a></li>
 
 							<li role="separator" class="divider"></li>
 
-							<li><a href="">식품</a></li>
+							<li><a href="productList.do">식품</a></li>
 
-							<li><a href="">주방용품/홈 인테리어</a></li>
+							<li><a href="productList.do">주방용품/홈 인테리어</a></li>
 
-							<li><a href="">가전/디지털/자동차</a></li>
+							<li><a href="productList.do">가전/디지털/자동차</a></li>
 							
 							<li role="separator" class="divider"></li>
 
-							<li><a href="">스포츠/레저/건강용품</a></li>
+							<li><a href="productList.do">스포츠/레저/건강용품</a></li>
 
-							<li><a href="">도서/음반/DVD</a></li>
+							<li><a href="productList.do">도서/음반/DVD</a></li>
 
-							<li><a href="">완구/취미/문구</a></li>
+							<li><a href="productList.do">완구/취미/문구</a></li>
 
 
 
@@ -219,13 +219,13 @@
 
 					<ul class="nav navbar-nav navbar-right">
 
-						<li><a href="#">마이페이지</a></li>
+						<li><a href="mypagedefault.do">마이페이지</a></li>
 
 						<li><a href="#">이벤트</a></li>
 
-						<li><a href="#">경매 신청</a></li>
+						<li><a href="bid_List.do">경매 신청</a></li>
 
-						<li><a href="#">문의 & FAQ</a></li>
+						<li><a href="info_page.do">문의 & FAQ</a></li>
 					</ul>
 
 				</div>
