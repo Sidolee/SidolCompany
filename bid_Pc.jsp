@@ -7,7 +7,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
 <jsp:useBean id="javaDate" class="java.util.Date" />
-<fmt:formatDate var="nowDate" value="${javaDate}" pattern="yyyy-MM-dd"/>
+<fmt:formatDate var="nowDate" value="${javaDate}" pattern="yyyy-MM-dd" />
 
 
 <!DOCTYPE html>
@@ -38,8 +38,12 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<%-- 신고글 JS --%>
 <script src="resources/js/warn_ajax.js"></script>
+<%-- 찜 추가 JS --%>
+<script src="resources/js/bid_Add_WishList.js"></script>
 
 </head>
 <body>
@@ -208,7 +212,7 @@
 							<li><a href="productList.do?C_ID=5">주방용품/홈 인테리어</a></li>
 
 							<li><a href="productList.do?C_ID=6">가전/디지털/자동차</a></li>
-							
+
 							<li role="separator" class="divider"></li>
 
 							<li><a href="productList.do?C_ID=7">스포츠/레저/건강용품</a></li>
@@ -249,8 +253,7 @@
 	</div>
 
 	<!--  end of header -->
-	
-	<!-- Page content-->
+
 	<div class="container">
 		<div class="row">
 			<!-- Blog entries-->
@@ -296,9 +299,8 @@
 							<div class="card-body">
 
 								<%-- 로그인 정보 - 계좌 --%>
-
-								현재 계좌 : 000,000,000원<br> 
-								내가 입찰한 금액 : 000,000,000원
+								내 계좌번호 : ${cash.ACCOUNT }<br> 현재 계좌 : ${cash.CASH }원<br>
+								내가 입찰한 금액 : ${ingproductmember.ING_COST }원
 							</div>
 						</div>
 						<div class="row"></div>
@@ -306,12 +308,19 @@
 							<div class="card-body">
 
 								<%-- 로그인 참조 --%>
-								<h4>참여 인원 : ${product.a_ACCESS} / ${product.a_LIMIT}</h4><!-- 경매참여인원 -->
-								
-								<h4>경매 상태 : <strong> 경매 진행중</strong></h4><!-- 경매중 -->
-								<h4><strong>현재가 : ${product.START_COST} 원</strong></h4><!-- 11.07 2:54 경매중 호가로 바꿔야함-->
+								<h4>참여 인원 : ${product.a_ACCESS} / ${product.a_LIMIT}</h4>
+								<!-- 경매참여인원 -->
+
+								<h4>
+									경매 상태 : <strong> 경매 진행중</strong>
+								</h4>
+								<!-- 경매중 -->
+								<h4>
+									<strong>현재가 : ${ingproduct.ING_COST } 원</strong>
+								</h4>
+								<!-- 11.07 2:54 경매중 호가로 바꿔야함-->
 								<!-- 호가가 0 원일때는 STARTCOST로 출력하기-->
-	
+
 							</div>
 						</div>
 						<a class="btn ms-lg-6 btn-primary" id="attendAuctionButton">입찰하기</a>
@@ -325,10 +334,10 @@
 				<!-- Featured blog post-->
 				<div class="card mb-4">
 					<div class="card-header">
-						제목 ${product.a_TITLE}
-
+						<h4>제목 ${product.a_TITLE}</h4>
 						<div class="text-right">
-							<a class="btn btn-outline-dark mt-auto" href="#"> 경매가 </a>
+							찜한 인원 수 : ${wishcount.COUNT } <a id="addWishList"
+								class="btn btn-outline-dark mt-auto text-right" href="#"> 찜하기 </a>
 						</div>
 					</div>
 					<div class="card-body">
@@ -336,14 +345,19 @@
 						<div class="small text-muted">${product.a_CONTENT}</div>
 					</div>
 				</div>
-				
+
 				<div class="card mb-4">
-					<div class="card-header">
-						입찰하기
-					</div>
-					<div class="card-body">
-						<input id="호가" value=""/>	<td><button>입찰하기</button></td>
-					</div>
+					<div class="card-header">입찰하기</div>
+					<form>
+						<input type="hidden" id="exPrice" name="exPrice"
+							value=${ingproduct.ING_COST }> <input type="hidden"
+							id="ING_BUYER" name="ING_BUYER" value=${sessionScope.logId }>
+						<input type="hidden" id="A_NUM" value=${product.a_NUM }>
+						<div class="card-body">
+							<input id="ING_COST" name="ING_COST" /> <input type="button"
+								value="입찰하기" id="joinAuctionButton">
+						</div>
+					</form>
 				</div>
 
 				<!-- Nested row for non-featured blog posts-->
@@ -361,33 +375,54 @@
 						<br>
 					</div>
 				</div>
+				
 				<!-- Categories widget-->
 				<div class="card mb-4">
 					<div class="card-header">남은 시간</div>
 					<div class="card-body">
-						경매 등록일 : <fmt:formatDate value="${product.a_DATE}" pattern="yyyy-MM-dd" /><br>
-						경매 시작일 :
-						<fmt:formatDate value="${product.a_STARTDAY}" pattern="yyyy-MM-dd" /><br>
-						경매 종료일 : 
-						<fmt:formatDate value="${product.a_ENDDAY}" pattern="yyyy-MM-dd" /> <br>
-						남은시간: 경매 종료일- 현재 시간 <br>						 
- 						
-						
+						경매 등록일 :
+						<fmt:formatDate value="${product.a_DATE}" pattern="yyyy-MM-dd" />
+						<br> 경매 시작일 :
+						<fmt:formatDate value="${product.a_STARTDAY}" pattern="yyyy-MM-dd" />
+						<br> 경매 종료일 :
+						<fmt:formatDate value="${product.a_ENDDAY}" pattern="yyyy-MM-dd" />
+						<br> 남은시간: 경매 종료일- 현재 시간 <br>
 					</div>
+					
 				</div>
 				<!-- Side widget-->
 				<div class="card mb-4">
-					<div class="card-header">즉시입찰가</div>
+					<div class="card-header">즉시 입찰가</div>
 					<div class="card-body">
-						10,000,000원 
+						10,000,000원 / 설정한 즉시 입찰가에 따라
+						<form>
+							<input type="hidden" id="ING_BUYER" name="ING_BUYER"
+								value=${sessionScope.logId }> <input type="hidden"
+								id="A_NUM" value=${product.a_NUM }> <input type="hidden"
+								id="ING_COST" name="ING_COST" value="" /> <input type="button"
+								value="입찰하기" id="joinAuctionButton">
+						</form>
 					</div>
 				</div>
-				
+
 				<div class="card mb-4">
 					<div class="card-body">
-						<a class="btn ms-lg-5 btn-primary" href="#1">기록 확인</a> 
-
-						<a id="warnWrite" class="btn ms-lg-5 btn-primary" href="bid_Write.do?A_NUM=${product.a_NUM}&W_CUSTOMER=${ sessionScope.logId }">신고 하기</a>
+						<a class="btn ms-lg-5 btn-primary"
+							href="productList.do?C_ID=${product.c_ID}"> <c:choose>
+								<c:when test="${product.c_ID eq 1}"> 패션의류 / 잡화 </c:when>
+								<c:when test="${product.c_ID eq 2}"> 뷰티 </c:when>
+								<c:when test="${product.c_ID eq 3}"> 유아 </c:when>
+								<c:when test="${product.c_ID eq 4}"> 식품 </c:when>
+								<c:when test="${product.c_ID eq 5}"> 주방용품 / 홈 인테리어 </c:when>
+								<c:when test="${product.c_ID eq 6}"> 가전 / 디지털 / 자동차 </c:when>
+								<c:when test="${product.c_ID eq 7}"> 스포츠 / 레저 / 건강용품 </c:when>
+								<c:when test="${product.c_ID eq 8}"> 도서 / 음반 / DVD </c:when>
+								<c:when test="${product.c_ID eq 9}"> 완구 / 취미 / 문구 </c:when>
+							</c:choose> 목록으로
+						</a> <a id="warnWrite" class="btn ms-lg-5 btn-primary"
+							href="bid_Write.do?A_NUM=${product.a_NUM}&W_CUSTOMER=${ sessionScope.logId }">신고
+							하기</a> <input id="A_NUM" hidden="" value="${product.a_NUM}">
+						<input id="W_CUSTOMER" hidden="" value="${sessionScope.logId}">
 					</div>
 				</div>
 

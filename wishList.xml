@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wishList">
+	
+	<!-- 사용자 문의 작성, 확인, 수정, 삭제 -->
+	
+	<insert id="insertWishList" parameterType="com.javassem.vo.WishListVO">	
+		INSERT INTO WISHLIST (W_ID, W_PRODUCT) 
+		VALUES	(#{W_ID}, #{W_PRODUCT})
+	</insert>
+	
+	<select id="selectWishListAll" resultType="com.javassem.vo.WishListVO" parameterType="com.javassem.vo.WishListVO">
+		SELECT * FROM WISHLIST WHERE W_ID = #{W_ID} AND W_PRODUCT = #{W_PRODUCT}
+	</select>
+	
+	<select id="countWishListAll" resultType="com.javassem.vo.WishListVO" parameterType="com.javassem.vo.WishListVO">
+		SELECT COUNT(*) COUNT FROM WISHLIST WHERE W_ID = #{W_ID} AND W_PRODUCT = #{W_PRODUCT}
+	</select>
+	
+</mapper>
